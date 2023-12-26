@@ -78,6 +78,10 @@ module McKeemanGrammar
     end
     alias :[] :get
 
+    def text?(text)
+      text == self.text
+    end
+
     def text
       @text ||= items.map(&:to_s).join
     end
