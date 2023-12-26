@@ -90,6 +90,45 @@ module McKeemanGrammar
       self.text.end_with?(text)
     end
 
+    def deconstruct
+      items.map(&:to_s)
+    end
+
+    def deconstruct_keys(keys=nil)
+      if keys.nil?
+        keys = [:rule, :text, rule_name]
+
+        items.each do |item|
+          if item.instance_of?(Match)
+            rule_name = item.rule_name
+
+            keys << rule_name
+          end
+        end
+      end
+
+      hash = {}
+
+      keys.each do |key|
+        item_match = item_by_rule(key)
+
+        if not item_match.nil?
+          item_rule_name = key
+          item_text = item_match.text
+
+          hash[item_rule_name] = item_text
+        elsif key == :rule
+          hash[:rule] = rule_name
+        elsif key == :text
+          hash[:text] = text
+        elsif key == rule_name
+          hash[rule_name] = text
+        end
+      end
+
+      hash
+    end
+
     def text
       @text ||= items.map(&:to_s).join
     end
