@@ -82,6 +82,14 @@ module McKeemanGrammar
       text == self.text
     end
 
+    def start_with?(text)
+      self.text.start_with?(text)
+    end
+
+    def end_with?(text)
+      self.text.end_with?(text)
+    end
+
     def text
       @text ||= items.map(&:to_s).join
     end
