@@ -19,6 +19,10 @@ module McKeemanGrammar
         ['a', Nested.example, 'c']
       end
 
+      def self.string
+        'abc'
+      end
+
       module Nested
         def self.example
           Match.example(rule_name:, items:)
