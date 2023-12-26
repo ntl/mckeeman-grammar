@@ -1,7 +1,7 @@
 require_relative '../init'
 
-require 'test_bench/isolated'; TestBenchIsolated::TestBench.activate
+require 'test_bench'; TestBench.activate
 
-require 'test_bench/controls'
+require 'mckeeman_grammar/controls'
 
 include McKeemanGrammar rescue nil
