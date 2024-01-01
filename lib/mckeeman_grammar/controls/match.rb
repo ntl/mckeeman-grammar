@@ -3,7 +3,12 @@ module McKeemanGrammar
     module Match
       def self.example(rule_name: nil, items: nil)
         rule_name ||= self.rule_name
-        items ||= self.items
+
+        if items == :none
+          items = nil
+        else
+          items ||= self.items
+        end
 
         McKeemanGrammar::Match.new(rule_name, items)
       end

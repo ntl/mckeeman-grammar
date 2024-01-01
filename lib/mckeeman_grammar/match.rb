@@ -4,6 +4,10 @@ module McKeemanGrammar
   class Match
     MatchError = Class.new(RuntimeError)
 
+    def length
+      items&.sum(&:length)
+    end
+
     def get_item_by_position(position)
       items.at(position)
     end
