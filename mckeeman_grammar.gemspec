@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.authors = ['Nathan Ladd']
   s.email = 'nathanladd+github@gmail.com'
   s.homepage = 'https://github.com/ntl/mckeeman-grammar'
-  s.licenses = %w(MIT)
+  s.licenses = %w(Proprietary)
   s.summary = "Lexical scanning of any grammar specified in McKeeman form"
   s.platform = Gem::Platform::RUBY
 
