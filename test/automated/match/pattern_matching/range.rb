@@ -5,16 +5,16 @@ context "Match" do
     context "Range" do
       range = 'a'..'z'
 
-      items = [
-        Controls::Match::Range.example(range, item: 'z'),
+      segments = [
+        Controls::Match::Range.example(range, segment: 'z'),
         'b'
       ]
 
-      match = Controls::Match.example(items:)
+      match = Controls::Match.example(segments:)
 
       case match
-      in text, 'b'
-        matched = text == 'z'
+      in string, 'b'
+        matched = string == 'z'
       else
         matched = false
       end

@@ -3,12 +3,12 @@ require_relative '../../automated_init'
 context "Match" do
   context "Pattern Matching" do
     context "Singleton" do
-      items = [
+      segments = [
         Controls::Match::Singleton.example('a'),
         'b'
       ]
 
-      match = Controls::Match.example(items:)
+      match = Controls::Match.example(segments:)
 
       case match
       in 'a', 'b'

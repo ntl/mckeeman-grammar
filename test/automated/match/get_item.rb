@@ -1,37 +1,37 @@
 require_relative '../automated_init'
 
 context "Match" do
-  context "Get Item" do
+  context "Get Segment" do
     match = Controls::Match.example
 
     context "Position" do
       position = 0
 
-      context "Item" do
-        item = match.item(position)
-        control_item = 'a'
+      context "Segment" do
+        segment = match.segment(position)
+        control_segment = 'a'
 
-        comment item.inspect
-        detail "Control: #{control_item.inspect}"
+        comment segment.inspect
+        detail "Control: #{control_segment.inspect}"
 
         test do
-          assert(item == control_item)
+          assert(segment == control_segment)
         end
       end
     end
 
     context "Rule" do
-      control_item = Controls::Match::Nested.example
-      rule_name = control_item.rule_name
+      control_segment = Controls::Match::Nested.example
+      rule_name = control_segment.rule_name
 
-      context "Item" do
-        item = match.item(rule_name)
+      context "Segment" do
+        segment = match.segment(rule_name)
 
-        comment item.inspect
-        detail "Control: #{control_item.inspect}"
+        comment segment.inspect
+        detail "Control: #{control_segment.inspect}"
 
         test do
-          assert(item == control_item)
+          assert(segment == control_segment)
         end
       end
     end

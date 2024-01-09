@@ -2,11 +2,11 @@ require_relative '../automated_init'
 
 context "Match" do
   context "Length" do
-    context "Match Has Items" do
-      items = ['1', '23', '456']
+    context "Match Has Segments" do
+      segments = ['1', '23', '456']
       control_length = 6
 
-      match = Controls::Match.example(items:)
+      match = Controls::Match.example(segments:)
 
       length = match.length
 
@@ -18,15 +18,15 @@ context "Match" do
       end
     end
 
-    context "Match Doesn't Have Any Items" do
-      match = Controls::Match.example(items: :none)
+    context "Match Doesn't Have Any Segments" do
+      match = Controls::Match.example(segments: :none)
 
       length = match.length
 
       comment length.inspect
 
-      test "None" do
-        assert(length.nil?)
+      test "Zero" do
+        assert(length.zero?)
       end
     end
   end

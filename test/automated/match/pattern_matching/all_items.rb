@@ -2,7 +2,7 @@ require_relative '../../automated_init'
 
 context "Match" do
   context "Pattern Matching" do
-    context "Match All Items" do
+    context "Match All Segments" do
       match = Controls::Match.example
 
       case match

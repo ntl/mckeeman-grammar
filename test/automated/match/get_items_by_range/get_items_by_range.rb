@@ -1,23 +1,23 @@
 require_relative '../../automated_init'
 
 context "Match" do
-  context "Get Items By Range" do
-    items = ['a', 'b', 'c']
+  context "Get Segments By Range" do
+    segments = ['a', 'b', 'c']
 
-    match = Controls::Match.example(items:)
+    match = Controls::Match.example(segments:)
 
     context "Specific Range" do
       range = 0..1
 
-      context "Items" do
-        items = match.items_by_range(range)
-        control_items = ['a', 'b']
+      context "Segments" do
+        segments = match.segments_by_range(range)
+        control_segments = ['a', 'b']
 
-        comment items.inspect
-        detail "Control: #{control_items.inspect}"
+        comment segments.inspect
+        detail "Control: #{control_segments.inspect}"
 
         test do
-          assert(items == control_items)
+          assert(segments == control_segments)
         end
       end
     end
@@ -25,15 +25,15 @@ context "Match" do
     context "Endless Range" do
       range = (1..)
 
-      context "Items" do
-        items = match.items_by_range(range)
-        control_items = ['b', 'c']
+      context "Segments" do
+        segments = match.segments_by_range(range)
+        control_segments = ['b', 'c']
 
-        comment items.inspect
-        detail "Control: #{control_items.inspect}"
+        comment segments.inspect
+        detail "Control: #{control_segments.inspect}"
 
         test do
-          assert(items == control_items)
+          assert(segments == control_segments)
         end
       end
     end

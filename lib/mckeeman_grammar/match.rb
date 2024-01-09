@@ -1,110 +1,118 @@
 module McKeemanGrammar
-  Match = Struct.new(:rule_name, :items)
+  Match = Struct.new(:rule_name, :segments)
 
   class Match
     MatchError = Class.new(RuntimeError)
 
+    def self.build(*segments, rule_name: nil)
+      new(rule_name, segments)
+    end
+
+    def self.nothing
+      build
+    end
+
     def length
-      items&.sum(&:length)
+      segments&.sum(&:length)
     end
 
-    def get_item_by_position(position)
-      items.at(position)
+    def get_segment_by_position(position)
+      segments.at(position)
     end
-    alias :item_by_position :get_item_by_position
-    alias :at :item_by_position
+    alias :segment_by_position :get_segment_by_position
+    alias :at :segment_by_position
 
-    def get_items_by_range(range)
-      items.slice(range)
+    def get_segments_by_range(range)
+      segments.slice(range)
     end
-    alias :items_by_range :get_items_by_range
-    alias :slice :items_by_range
+    alias :segments_by_range :get_segments_by_range
+    alias :slice :segments_by_range
 
-    def get_items_by_rule(rule_name)
-      items.select do |item|
-        if item.instance_of?(Match)
-          item_rule_name = item.rule_name
+    def get_segments_by_rule(rule_name)
+      segments.select do |segment|
+        if segment.instance_of?(Match)
+          segment_rule_name = segment.rule_name
         end
 
-        item_rule_name == rule_name
+        segment_rule_name == rule_name
       end
     end
-    alias :items_by_rule :get_items_by_rule
+    alias :segments_by_rule :get_segments_by_rule
 
-    def get_item_by_rule(rule_name)
-      items = get_items_by_rule(rule_name)
+    def get_segment_by_rule(rule_name)
+      segments = get_segments_by_rule(rule_name)
 
-      if items.length > 1
-        raise MatchError, "Multiple items match rule #{rule_name.inspect} (Items: #{items.map(&:to_s).inspect})"
+      if segments.length > 1
+        raise MatchError, "Multiple segments match rule #{rule_name.inspect} (Segments: #{segments.map(&:to_s).inspect})"
       end
 
-      item = items.first
+      segment = segments.first
 
-      return item
+      return segment
     end
-    alias :item_by_rule :get_item_by_rule
+    alias :segment_by_rule :get_segment_by_rule
 
-    def get_item(val)
+    def get_segment(val)
       case val
       in Symbol => rule_name
-        get_item_by_rule(rule_name)
+        get_segment_by_rule(rule_name)
       in Integer => position
-        get_item_by_position(position)
+        get_segment_by_position(position)
       end
     end
-    alias :item :get_item
+    alias :segment :get_segment
 
-    def get_items(val)
+    def get_segments(val)
       case val
       in Symbol => rule_name
-        get_items_by_rule(rule_name)
+        get_segments_by_rule(rule_name)
       in Range => range
-        get_items_by_range(range)
+        get_segments_by_range(range)
       end
     end
 
     def get(val)
       case val
       in Symbol
-        items = get_items(val)
+        segments = get_segments(val)
 
-        if items.count > 1
-          items
+        if segments.count > 1
+          segments
         else
-          item = items.first
-          item
+          segment = segments.first
+          segment
         end
       in Integer
-        get_item(val)
+        get_segment(val)
       in Range
-        get_items(val)
+        get_segments(val)
       end
     end
     alias :[] :get
 
-    def text?(text)
-      text == self.text
+    def string?(str)
+      str == self.string
     end
 
-    def start_with?(text)
-      self.text.start_with?(text)
+    def start_with?(str)
+      string.start_with?(str)
     end
 
-    def end_with?(text)
-      self.text.end_with?(text)
+    def end_with?(str)
+      string.end_with?(str)
     end
 
     def deconstruct
-      items.map(&:to_s)
+      segments.map(&:to_s)
     end
 
     def deconstruct_keys(keys=nil)
       if keys.nil?
-        keys = [:rule, :text, rule_name]
+        keys = [:rule, :string, rule_name]
 
-        items.each do |item|
-          if item.instance_of?(Match)
-            rule_name = item.rule_name
+        segments.each do |segment|
+          if segment.instance_of?(Match)
+            rule_name = segment.rule_name
 
             keys << rule_name
           end
@@ -114,28 +122,28 @@ module McKeemanGrammar
       hash = {}
 
       keys.each do |key|
-        item_match = item_by_rule(key)
+        segment_match = segment_by_rule(key)
 
-        if not item_match.nil?
-          item_rule_name = key
-          item_text = item_match.text
+        if not segment_match.nil?
+          segment_rule_name = key
+          segment_string = segment_match.string
 
-          hash[item_rule_name] = item_text
+          hash[segment_rule_name] = segment_string
         elsif key == :rule
           hash[:rule] = rule_name
-        elsif key == :text
-          hash[:text] = text
+        elsif key == :string
+          hash[:string] = string
         elsif key == rule_name
-          hash[rule_name] = text
+          hash[rule_name] = string
         end
       end
 
       hash
     end
 
-    def text
-      @text ||= items.map(&:to_s).join
+    def string
+      @string ||= segments.map(&:to_s).join
     end
-    alias :to_s :text
+    alias :to_s :string
   end
 end

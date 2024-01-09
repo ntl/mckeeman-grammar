@@ -1,24 +1,24 @@
 require_relative '../../automated_init'
 
 context "Match" do
-  context "Get Item By Position" do
-    items = ['a', 'b', 'c']
+  context "Get Segment By Position" do
+    segments = ['a', 'b', 'c']
 
-    match = Controls::Match.example(items:)
+    match = Controls::Match.example(segments:)
 
     context "Positive Index" do
       context "Within Bounds" do
         position = 1
 
-        context "Item" do
-          item = match.item_by_position(position)
-          control_item = 'b'
+        context "Segment" do
+          segment = match.segment_by_position(position)
+          control_segment = 'b'
 
-          comment item.inspect
-          detail "Control: #{control_item.inspect}"
+          comment segment.inspect
+          detail "Control: #{control_segment.inspect}"
 
           test do
-            assert(item == control_item)
+            assert(segment == control_segment)
           end
         end
       end
@@ -26,13 +26,13 @@ context "Match" do
       context "Out of Bounds" do
         position = 3
 
-        context "Item" do
-          item = match.item_by_position(position)
+        context "Segment" do
+          segment = match.segment_by_position(position)
 
-          comment item.inspect
+          comment segment.inspect
 
           test "None" do
-            assert(item.nil?)
+            assert(segment.nil?)
           end
         end
       end
@@ -42,15 +42,15 @@ context "Match" do
       context "Within Bounds" do
         position = -1
 
-        context "Item" do
-          item = match.item_by_position(position)
-          control_item = 'c'
+        context "Segment" do
+          segment = match.segment_by_position(position)
+          control_segment = 'c'
 
-          comment item.inspect
-          detail "Control: #{control_item.inspect}"
+          comment segment.inspect
+          detail "Control: #{control_segment.inspect}"
 
           test do
-            assert(item == control_item)
+            assert(segment == control_segment)
           end
         end
       end
@@ -58,13 +58,13 @@ context "Match" do
       context "Out of Bounds" do
         position = -4
 
-        context "Item" do
-          item = match.item_by_position(position)
+        context "Segment" do
+          segment = match.segment_by_position(position)
 
-          comment item.inspect
+          comment segment.inspect
 
           test "None" do
-            assert(item.nil?)
+            assert(segment.nil?)
           end
         end
       end

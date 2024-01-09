@@ -4,13 +4,13 @@ module McKeemanGrammar
       include Pattern
       include Initializer
 
-      initializer :item_patterns
+      initializer :segment_patterns
 
-      def self.build(item, *items)
-        items.unshift(item)
+      def self.build(segment, *segments)
+        segments.unshift(segment)
 
-        item_patterns = items.map do |item|
-          case item
+        segment_patterns = segments.map do |segment|
+          case segment
           in String => characters
             CharacterLiteral.new(characters)
           in ::Range => range
@@ -19,32 +19,34 @@ module McKeemanGrammar
           in Integer => codepoint
             Singleton.build(codepoint)
           in Pattern
-            item
+            segment
           end
         end
 
-        new(item_patterns)
+        new(segment_patterns)
       end
 
-      def match(str, &blk)
-        item_patterns.each do |item_pattern|
-          item_pattern.match(str) do |match|
-            match_length = match.length
+      def match(text)
+        segments = segment_patterns.map do |segment_pattern|
+          match = segment_pattern.match(text)
 
-            str = str[match_length..]
+          return nil if match.nil?
 
-            blk.(match)
-          end
+          text = text[match.length..]
+
+          match
         end
+
+        Match.build(*segments)
       end
 
       def source
         source = String.new
 
-        item_patterns.each_with_index do |item_pattern, index|
+        segment_patterns.each_with_index do |segment_pattern, index|
           source << " " if not index.zero?
 
-          source << item_pattern.source
+          source << segment_pattern.source
         end
 
         source

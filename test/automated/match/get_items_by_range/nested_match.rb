@@ -1,23 +1,23 @@
 require_relative '../../automated_init'
 
 context "Match" do
-  context "Get Items By Range" do
+  context "Get Segments By Range" do
     context "Nested Match" do
-      items = ['a', Controls::Match::Nested.example, 'b']
-      match = Controls::Match.example(items:)
+      segments = ['a', Controls::Match::Nested.example, 'b']
+      match = Controls::Match.example(segments:)
 
       range = (1..)
 
-      control_items = items[range]
+      control_segments = segments[range]
 
-      context "Items" do
-        items = match.items_by_range(range)
+      context "Segments" do
+        segments = match.segments_by_range(range)
 
-        comment items.inspect
-        detail "Control: #{control_items.inspect}"
+        comment segments.inspect
+        detail "Control: #{control_segments.inspect}"
 
         test do
-          assert(items == control_items)
+          assert(segments == control_segments)
         end
       end
     end

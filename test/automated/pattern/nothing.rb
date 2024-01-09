@@ -3,27 +3,34 @@ require_relative '../automated_init'
 context "Pattern" do
   context "Nothing" do
     pattern = Pattern::Nothing.build
+    comment "Pattern:", pattern.source, quote: true
 
-    comment "Pattern: #{pattern.source}"
+    text = Controls::Text.example
+    comment "Text: #{text.inspect}"
 
-    str = Controls::String.example
+    match = pattern.match(text)
 
-    effect = nil
-    blk = proc {
-      effect = :_
-    }
+    test! "Match" do
+      refute(match.nil?)
+    end
 
-    test! "Doesn't signal StopIteration" do
-      refute_raises(StopIteration) do
-        pattern.match(str, &blk)
+    context "Rule Name" do
+      rule_name = match.rule_name
+
+      test "Not set" do
+        assert(rule_name.nil?)
       end
     end
 
-    context "No match" do
-      match = !effect.nil?
+    context "String" do
+      string = match.string
+      comment string.inspect
+
+      control_string = ""
+      detail "Control: #{control_string.inspect}"
 
       test do
-        refute(match)
+        assert(string == control_string)
       end
     end
   end

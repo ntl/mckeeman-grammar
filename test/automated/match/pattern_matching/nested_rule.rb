@@ -22,8 +22,8 @@ context "Match" do
         match = Controls::Match.example
 
         case match
-        in 'a', text, 'c'
-          matched = text == 'b'
+        in 'a', string, 'c'
+          matched = string == 'b'
         else
           matched = false
         end
@@ -33,13 +33,13 @@ context "Match" do
         end
       end
 
-      context "Multiple Items Match" do
-        items = [
+      context "Multiple Segments Match" do
+        segments = [
           Controls::Match::Singleton.example('a'),
           Controls::Match::Singleton.example('b')
         ]
 
-        match = Controls::Match.example(items:)
+        match = Controls::Match.example(segments:)
 
         test "Is an error" do
           assert_raises(Match::MatchError) do

@@ -2,30 +2,20 @@ module McKeemanGrammar
   module Controls
     module Pattern
       module Alternative
-        def self.example(*items)
-          if items.empty?
-            items = self.items
+        def self.example(*segments)
+          if segments.empty?
+            segments = self.segments
           end
 
-          McKeemanGrammar::Pattern::Alternative.build(*items)
+          McKeemanGrammar::Pattern::Alternative.build(*segments)
         end
 
-        def self.items
-          ["some", (0..), "sequence"]
-        end
-
-        module String
-          module Match
-            def self.example
-              "some-sequence"
-            end
-          end
-
-          module NoMatch
-            def self.example
-              "some-other-sequence"
-            end
-          end
+        def self.segments
+          [
+            Text.words.first,
+            (0..),
+            Text.words.last
+          ]
         end
       end
     end

@@ -7,7 +7,8 @@ module McKeemanGrammar
         @instance ||= new
       end
 
-      def match(_str, &blk)
+      def match(_text)
+        Match.nothing
       end
 
       def source

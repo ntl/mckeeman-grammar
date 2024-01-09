@@ -4,10 +4,10 @@ context "Match" do
   context "Start With Predicate" do
     match = Controls::Match.example
 
-    context "Match's String Representation Starts With Given Text" do
-      text = Controls::Match.string[0]
+    context "Match's String Representation Starts With Given String" do
+      string = Controls::Match.string[0]
 
-      result = match.start_with?(text)
+      result = match.start_with?(string)
 
       comment result.inspect
 
@@ -16,10 +16,10 @@ context "Match" do
       end
     end
 
-    context "Match's String Representation Doesn't Start With Given Text" do
-      text = Controls::Match.string[1]
+    context "Match's String Representation Doesn't Start With Given String" do
+      string = Controls::Match.string[1]
 
-      result = match.start_with?(text)
+      result = match.start_with?(string)
 
       comment result.inspect
 

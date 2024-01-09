@@ -5,16 +5,16 @@ context "Match" do
     context "Characters" do
       characters = 'some-text'
 
-      items = [
+      segments = [
         Controls::Match::Characters.example(characters),
         'b'
       ]
 
-      match = Controls::Match.example(items:)
+      match = Controls::Match.example(segments:)
 
       case match
-      in text, 'b'
-        matched = text == characters
+      in string, 'b'
+        matched = string == characters
       else
         matched = false
       end

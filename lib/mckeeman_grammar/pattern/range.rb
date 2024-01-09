@@ -10,17 +10,14 @@ module McKeemanGrammar
         new(range, exclusions)
       end
 
-      def match(str, &blk)
-        codepoint = str.unpack1("U")
+      def match(text)
+        codepoint = text.unpack1("U")
 
         if not member?(codepoint)
-          raise StopIteration
+          return nil
         end
 
-        items = [codepoint.chr]
-        match = Match.new(items:)
-
-        blk.(match)
+        Match.build(codepoint.chr)
       end
 
       def member?(codepoint)

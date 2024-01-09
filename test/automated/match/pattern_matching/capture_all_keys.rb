@@ -6,7 +6,7 @@ context "Match" do
       match = Controls::Match.example
 
       case match
-      in rule:, some_rule:, text:, **keys
+      in rule:, some_rule:, string:, **keys
         matched = keys == { some_nested_rule: 'b' }
       else
         matched = false

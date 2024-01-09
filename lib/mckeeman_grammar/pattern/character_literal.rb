@@ -6,19 +6,16 @@ module McKeemanGrammar
 
       initializer :characters
 
-      def match(str, &blk)
-        if not characters?(str)
-          raise StopIteration
+      def match(text)
+        if not characters?(text)
+          return nil
         end
 
-        items = [characters]
-        match = Match.new(items:)
-
-        blk.(match)
+        Match.build(characters)
       end
 
-      def characters?(str)
-        str.start_with?(characters)
+      def characters?(text)
+        text.start_with?(characters)
       end
 
       def source

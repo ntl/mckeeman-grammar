@@ -6,17 +6,14 @@ module McKeemanGrammar
 
       initializer :codepoint
 
-      def match(str, &blk)
-        codepoint = str.unpack1("U")
+      def match(text)
+        codepoint = text.unpack1("U")
 
         if not codepoint?(codepoint)
-          raise StopIteration
+          return nil
         end
 
-        items = [codepoint.chr]
-        match = Match.new(items:)
-
-        blk.(match)
+        Match.build(codepoint.chr)
       end
 
       def codepoint?(codepoint)

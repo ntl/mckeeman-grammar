@@ -1,23 +1,23 @@
 module McKeemanGrammar
   module Controls
     module Match
-      def self.example(rule_name: nil, items: nil)
+      def self.example(rule_name: nil, segments: nil)
         rule_name ||= self.rule_name
 
-        if items == :none
-          items = nil
+        if segments == :none
+          segments = []
         else
-          items ||= self.items
+          segments ||= self.segments
         end
 
-        McKeemanGrammar::Match.new(rule_name, items)
+        McKeemanGrammar::Match.build(*segments, rule_name:)
       end
 
       def self.rule_name
         Rule::Name.example
       end
 
-      def self.items
+      def self.segments
         ['a', Nested.example, 'c']
       end
 
@@ -27,51 +27,51 @@ module McKeemanGrammar
 
       module Nested
         def self.example
-          Match.example(rule_name:, items:)
+          Match.example(rule_name:, segments:)
         end
 
         def self.rule_name
           :some_nested_rule
         end
 
-        def self.items
+        def self.segments
           ['b']
         end
       end
 
       module Singleton
-        def self.example(item=nil)
-          item ||= self.item
+        def self.example(segment=nil)
+          segment ||= self.segment
 
-          items = [item]
+          segments = [segment]
 
-          Match.example(rule_name:, items:)
+          Match.example(rule_name:, segments:)
         end
 
         def self.rule_name
           :some_singleton_rule
         end
 
-        def self.item
+        def self.segment
           'a'
         end
       end
 
       module Range
-        def self.example(range=nil, item: nil)
+        def self.example(range=nil, segment: nil)
           range ||= self.range
-          item ||= range.begin
+          segment ||= range.begin
 
-          items = [item]
+          segments = [segment]
 
-          Match.example(rule_name:, items:)
+          Match.example(rule_name:, segments:)
         end
 
         def self.rule_name
           :some_range_rule
         end
 
-        def self.item
+        def self.segment
           'a'
         end
       end
@@ -80,10 +80,10 @@ module McKeemanGrammar
         def self.example(characters=nil)
           characters ||= self.characters
 
-          item = characters
-          items = [item]
+          segment = characters
+          segments = [segment]
 
-          Match.example(rule_name:, items:)
+          Match.example(rule_name:, segments:)
         end
 
         def self.rule_name
