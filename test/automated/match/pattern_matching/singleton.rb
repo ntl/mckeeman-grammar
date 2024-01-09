@@ -1,17 +1,17 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Pattern Matching" do
     context "Singleton" do
       segments = [
-        Controls::Match::Singleton.example('a'),
-        'b'
+        Controls::Match::Singleton.example("a"),
+        "b"
       ]
 
       match = Controls::Match.example(segments:)
 
       case match
-      in 'a', 'b'
+      in "a", "b"
         matched = true
       else
         matched = false

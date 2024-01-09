@@ -1,4 +1,4 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Pattern Matching" do
@@ -7,7 +7,7 @@ context "Match" do
 
       case match
       in rule:, some_rule:, string:, **keys
-        matched = keys == { some_nested_rule: 'b' }
+        matched = keys == { some_nested_rule: "b" }
       else
         matched = false
       end

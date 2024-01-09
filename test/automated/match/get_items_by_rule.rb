@@ -1,8 +1,8 @@
-require_relative '../automated_init'
+require_relative "../automated_init"
 
 context "Match" do
   context "Get Segments By Rule" do
-    context "An Segment's Rule Name Corresponds" do
+    context "A Segment's Rule Name Corresponds" do
       match = Controls::Match.example
 
       control_segment = Controls::Match::Nested.example
@@ -22,7 +22,7 @@ context "Match" do
       end
     end
 
-    context "An Segment's Rule Name Doesn't Correspond" do
+    context "A Segment's Rule Name Doesn't Correspond" do
       match = Controls::Match.example
 
       rule_name = Controls::Rule::Name.random
@@ -42,11 +42,11 @@ context "Match" do
       rule_name = Controls::Rule::Name.random
 
       control_segments = [
-        Controls::Match.example(rule_name:, segments: ['b']),
-        Controls::Match.example(rule_name:, segments: ['c'])
+        Controls::Match.example(rule_name:, segments: ["b"]),
+        Controls::Match.example(rule_name:, segments: ["c"])
       ]
 
-      segments = ['a', *control_segments, 'd']
+      segments = ["a", *control_segments, "d"]
       match = Controls::Match.example(segments:)
 
       context "Segments" do

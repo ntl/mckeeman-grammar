@@ -25,9 +25,9 @@ module McKeemanGrammar
     def letter
       rule!(
         :letter,
-        '[a-z]',
-        '[A-Z]',
-        '_'
+        "[a-z]",
+        "[A-Z]",
+        "_"
       )
     end
 
@@ -54,8 +54,8 @@ module McKeemanGrammar
     def nothing
       rule!(
         :nothing,
-        '',
-        [indentation, '""', newline]
+        "",
+        [indentation, "''", newline]
       )
     end
 
@@ -92,7 +92,7 @@ module McKeemanGrammar
         :literal,
         singleton,
         [range, exclude],
-        ['"', characters, '"']
+        ["'", characters, "'"]
       )
     end
 
@@ -103,7 +103,7 @@ module McKeemanGrammar
     def codepoint
       rule!(
         :codepoint,
-        '[ -\u{10FFFF}]',
+        "[ -\u{10FFFF}]",
         hexcode
       )
     end
@@ -111,14 +111,14 @@ module McKeemanGrammar
     def hexcode
       rule!(
         :hexcode,
-        ['10', hex, hex, hex, hex],
+        ["10", hex, hex, hex, hex],
         [hex, hex, hex, hex, hex],
         [hex, hex, hex, hex]
       )
     end
 
     def hex
-      rule!(:hex, '[0-9]', '[A-F]')
+      rule!(:hex, "[0-9]", "[A-F]")
     end
 
     def range
@@ -128,9 +128,9 @@ module McKeemanGrammar
     def exclude
       rule!(
         :exclude,
-        '',
-        [space, '-', space, singleton, :exclude],
-        [space, '-', space, range, :exclude]
+        "",
+        [space, "-", space, singleton, :exclude],
+        [space, "-", space, range, :exclude]
       )
     end
 

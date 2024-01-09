@@ -18,11 +18,11 @@ module McKeemanGrammar
       end
 
       def self.segments
-        ['a', Nested.example, 'c']
+        ["a", Nested.example, "c"]
       end
 
       def self.string
-        'abc'
+        "abc"
       end
 
       module Nested
@@ -35,7 +35,7 @@ module McKeemanGrammar
         end
 
         def self.segments
-          ['b']
+          ["b"]
         end
       end
 
@@ -53,7 +53,7 @@ module McKeemanGrammar
         end
 
         def self.segment
-          'a'
+          "a"
         end
       end
 
@@ -72,7 +72,7 @@ module McKeemanGrammar
         end
 
         def self.segment
-          'a'
+          "a"
         end
       end
 
@@ -91,7 +91,7 @@ module McKeemanGrammar
         end
 
         def self.characters
-          'some-text'
+          "some-text"
         end
       end
     end

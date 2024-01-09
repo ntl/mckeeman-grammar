@@ -1,9 +1,9 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Get Segments By Range" do
     context "Nested Match" do
-      segments = ['a', Controls::Match::Nested.example, 'b']
+      segments = ["a", Controls::Match::Nested.example, "b"]
       match = Controls::Match.example(segments:)
 
       range = (1..)

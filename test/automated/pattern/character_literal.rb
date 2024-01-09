@@ -1,4 +1,4 @@
-require_relative '../automated_init'
+require_relative "../automated_init"
 
 context "Character Literal Pattern" do
   pattern = Controls::Pattern::CharacterLiteral.example

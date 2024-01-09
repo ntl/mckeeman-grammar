@@ -1,4 +1,4 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Pattern Matching" do
@@ -6,8 +6,8 @@ context "Match" do
       match = Controls::Match.example
 
       case match
-      in 'a', value, 'c'
-        matched = value == 'b'
+      in "a", value, "c"
+        matched = value == "b"
       else
         matched = false
       end

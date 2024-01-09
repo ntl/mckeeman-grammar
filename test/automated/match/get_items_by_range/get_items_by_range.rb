@@ -1,8 +1,8 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Get Segments By Range" do
-    segments = ['a', 'b', 'c']
+    segments = ["a", "b", "c"]
 
     match = Controls::Match.example(segments:)
 
@@ -11,7 +11,7 @@ context "Match" do
 
       context "Segments" do
         segments = match.segments_by_range(range)
-        control_segments = ['a', 'b']
+        control_segments = ["a", "b"]
 
         comment segments.inspect
         detail "Control: #{control_segments.inspect}"
@@ -27,7 +27,7 @@ context "Match" do
 
       context "Segments" do
         segments = match.segments_by_range(range)
-        control_segments = ['b', 'c']
+        control_segments = ["b", "c"]
 
         comment segments.inspect
         detail "Control: #{control_segments.inspect}"

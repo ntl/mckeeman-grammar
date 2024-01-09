@@ -1,16 +1,16 @@
-require_relative '../automated_init'
+require_relative "../automated_init"
 
 context "Match" do
   context "Get Segments" do
     context "Range" do
-      segments = ['a', 'b', 'c']
+      segments = ["a", "b", "c"]
       match = Controls::Match.example(segments:)
 
       range = 0..1
 
       context "Segments" do
         segments = match.segments_by_range(range)
-        control_segments = ['a', 'b']
+        control_segments = ["a", "b"]
 
         comment segments.inspect
         detail "Control: #{control_segments.inspect}"
@@ -25,11 +25,11 @@ context "Match" do
       rule_name = Controls::Rule::Name.random
 
       control_segments = [
-        Controls::Match.example(rule_name:, segments: ['b']),
-        Controls::Match.example(rule_name:, segments: ['c'])
+        Controls::Match.example(rule_name:, segments: ["b"]),
+        Controls::Match.example(rule_name:, segments: ["c"])
       ]
 
-      segments = ['a', *control_segments, 'd']
+      segments = ["a", *control_segments, "d"]
       match = Controls::Match.example(segments:)
 
       context "Segments" do

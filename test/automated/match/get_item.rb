@@ -1,4 +1,4 @@
-require_relative '../automated_init'
+require_relative "../automated_init"
 
 context "Match" do
   context "Get Segment" do
@@ -9,7 +9,7 @@ context "Match" do
 
       context "Segment" do
         segment = match.segment(position)
-        control_segment = 'a'
+        control_segment = "a"
 
         comment segment.inspect
         detail "Control: #{control_segment.inspect}"

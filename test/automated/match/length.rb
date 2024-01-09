@@ -1,9 +1,9 @@
-require_relative '../automated_init'
+require_relative "../automated_init"
 
 context "Match" do
   context "Length" do
     context "Match Has Segments" do
-      segments = ['1', '23', '456']
+      segments = ["1", "23", "456"]
       control_length = 6
 
       match = Controls::Match.example(segments:)

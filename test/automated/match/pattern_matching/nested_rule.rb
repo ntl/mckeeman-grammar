@@ -1,4 +1,4 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Pattern Matching" do
@@ -8,7 +8,7 @@ context "Match" do
 
         case match
         in some_nested_rule: value
-          matched = value == 'b'
+          matched = value == "b"
         else
           matched = false
         end
@@ -22,8 +22,8 @@ context "Match" do
         match = Controls::Match.example
 
         case match
-        in 'a', string, 'c'
-          matched = string == 'b'
+        in "a", string, "c"
+          matched = string == "b"
         else
           matched = false
         end
@@ -35,8 +35,8 @@ context "Match" do
 
       context "Multiple Segments Match" do
         segments = [
-          Controls::Match::Singleton.example('a'),
-          Controls::Match::Singleton.example('b')
+          Controls::Match::Singleton.example("a"),
+          Controls::Match::Singleton.example("b")
         ]
 
         match = Controls::Match.example(segments:)

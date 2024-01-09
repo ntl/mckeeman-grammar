@@ -1,8 +1,8 @@
-require_relative '../../automated_init'
+require_relative "../../automated_init"
 
 context "Match" do
   context "Get Segment By Position" do
-    segments = ['a', 'b', 'c']
+    segments = ["a", "b", "c"]
 
     match = Controls::Match.example(segments:)
 
@@ -12,7 +12,7 @@ context "Match" do
 
         context "Segment" do
           segment = match.segment_by_position(position)
-          control_segment = 'b'
+          control_segment = "b"
 
           comment segment.inspect
           detail "Control: #{control_segment.inspect}"
@@ -44,7 +44,7 @@ context "Match" do
 
         context "Segment" do
           segment = match.segment_by_position(position)
-          control_segment = 'c'
+          control_segment = "c"
 
           comment segment.inspect
           detail "Control: #{control_segment.inspect}"
