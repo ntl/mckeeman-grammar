@@ -10,6 +10,10 @@ module McKeemanGrammar
           :some_rule
         end
 
+        def self.other_example
+          :some_other_rule
+        end
+
         def self.random
           suffix = Random.string
 

@@ -6,6 +6,8 @@ module McKeemanGrammar
 
       initializer :segment_patterns
 
+      ## Review whether this is needed after grammar parser is implemented
+      ## If it is needed, write tests
       def self.build(segment, *segments)
         segments.unshift(segment)
 
@@ -15,7 +17,6 @@ module McKeemanGrammar
             CharacterLiteral.new(characters)
           in ::Range => range
             Range.build(range)
-          ## Test
           in Integer => codepoint
             Singleton.build(codepoint)
           in Pattern
@@ -44,7 +45,9 @@ module McKeemanGrammar
         source = String.new
 
         segment_patterns.each_with_index do |segment_pattern, index|
-          source << " " if not index.zero?
+          if not index.zero?
+            source << " "
+          end
 
           source << segment_pattern.source
         end
