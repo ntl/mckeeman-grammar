@@ -4,6 +4,8 @@ context "Pattern" do
   context "Nothing" do
     pattern = Pattern::Nothing.build
 
+    comment "Pattern: #{pattern.source}"
+
     str = Controls::String.example
 
     effect = nil
@@ -11,17 +13,17 @@ context "Pattern" do
       effect = :_
     }
 
-    test! "Doesn't raise StopIteration" do
+    test! "Doesn't signal StopIteration" do
       refute_raises(StopIteration) do
         pattern.match(str, &blk)
       end
     end
 
-    context "Block Argument" do
-      executed = !effect.nil?
+    context "No match" do
+      match = !effect.nil?
 
-      test "Not executed" do
-        refute(executed)
+      test do
+        refute(match)
       end
     end
   end
