@@ -9,6 +9,10 @@ module McKeemanGrammar
           McKeemanGrammar::Pattern::Rule.build(rule_name, *alternatives)
         end
 
+        def self.other_example
+          MultipleAlternatives.example
+        end
+
         def self.rule_name
           Controls::Rule::Name.example
         end

@@ -43,10 +43,6 @@ module McKeemanGrammar
       )
     end
 
-    def next_rule
-      "(?<rule>#{rule}#{newline})"
-    end
-
     def rule
       "#{name}#{newline}#{nothing}#{alternatives}"
     end
@@ -55,7 +51,7 @@ module McKeemanGrammar
       rule!(
         :nothing,
         "",
-        [indentation, "''", newline]
+        [indentation, "\"\"", newline]
       )
     end
 
@@ -92,7 +88,7 @@ module McKeemanGrammar
         :literal,
         singleton,
         [range, exclude],
-        ["'", characters, "'"]
+        ["\"", characters, "\""]
       )
     end
 
