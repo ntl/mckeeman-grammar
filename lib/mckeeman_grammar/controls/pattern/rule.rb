@@ -47,7 +47,7 @@ module McKeemanGrammar
           end
 
           def self.partial_alternative
-            segment_characters = Text.words.first
+            segment_characters = Text.segments.first
             segment_pattern = CharacterLiteral.example(segment_characters)
 
             segment_patterns = [segment_pattern]

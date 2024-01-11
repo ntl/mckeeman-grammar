@@ -8,7 +8,7 @@ context "Range Pattern" do
     [
       [Controls::Pattern::Range::Codepoint.member, "Range Includes String's First Character"],
       [Controls::Pattern::Range::Codepoint.range_begin, "Range's First Character Matches String's First Character"],
-      [Controls::Pattern::Range::Codepoint.range_end, "Range's Final Character Matches String's First Character"]
+      [Controls::Pattern::Range::Codepoint.range_end, "Range's Last Character Matches String's First Character"]
     ].each do |(codepoint, context_title)|
       context "#{context_title}" do
         text = Controls::Text.example(prefix: codepoint.chr)
@@ -48,11 +48,11 @@ context "Range Pattern" do
   context "No Match" do
     [
       [Controls::Pattern::Range::Codepoint.range_begin - 1, "Range's First Character Exceeds String's First Character"],
-      [Controls::Pattern::Range::Codepoint.range_end + 1, "Range's Final Character Precedes String's First Character"],
+      [Controls::Pattern::Range::Codepoint.range_end + 1, "Range's Last Character Precedes String's First Character"],
       [Controls::Pattern::Range::Codepoint.excluded_codepoint, "String's First Character Is Excluded"],
       [Controls::Pattern::Range::Codepoint.excluded_range_member, "An Excluded Range Includes String's First Character"],
       [Controls::Pattern::Range::Codepoint.excluded_range_begin, "An Excluded Range's First Character Exceeds String's First Character"],
-      [Controls::Pattern::Range::Codepoint.excluded_range_end, "An Excluded Range's Final Character Precedes String's First Character"]
+      [Controls::Pattern::Range::Codepoint.excluded_range_end, "An Excluded Range's Last Character Precedes String's First Character"]
     ].each do |(codepoint, context_title)|
       context "#{context_title}" do
         text = Controls::Text.example(prefix: codepoint.chr)

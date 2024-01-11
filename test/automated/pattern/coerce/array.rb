@@ -3,7 +3,7 @@ require_relative '../../automated_init'
 context "Pattern" do
   context "Coerce" do
     context "Array" do
-      segments = Controls::Pattern::Alternative.segments
+      segments = ["some", (0..), "text"]
 
       array = segments
       pattern = Pattern(array)

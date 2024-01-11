@@ -9,7 +9,7 @@ module McKeemanGrammar
         end
 
         def self.characters
-          Text.words.first
+          Text.segments.first
         end
       end
     end

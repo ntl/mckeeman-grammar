@@ -10,22 +10,14 @@ module McKeemanGrammar
           McKeemanGrammar::Pattern::Alternative.new(segment_patterns)
         end
 
-        def self.segments
-          [
-            Text.words.first,
-            (0..),
-            Text.words.last
-          ]
-        end
-
         def self.segment_patterns
-          first_word, range, final_word = self.segments
+          first_word, range, last_word = Text.segments
 
-          [
-            CharacterLiteral.example(first_word),
-            Range.example(range:, exclusions: :none),
-            CharacterLiteral.example(final_word)
-          ]
+          first_word = CharacterLiteral.example(first_word)
+          range = Range::All.example
+          last_word = CharacterLiteral.example(last_word)
+
+          [first_word, range, last_word]
         end
       end
     end

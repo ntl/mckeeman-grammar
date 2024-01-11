@@ -2,13 +2,13 @@ module McKeemanGrammar
   module Controls
     module Text
       def self.example(prefix: nil)
-        words = self.words
+        segments = self.segments
 
         if not prefix.nil?
-          words.unshift(prefix)
+          segments.unshift(prefix)
         end
 
-        words.join(delimiter)
+        segments.join
       end
 
       def self.other_example
@@ -21,8 +21,8 @@ module McKeemanGrammar
         example(prefix:)
       end
 
-      def self.words
-        ["some", "text"]
+      def self.segments
+        ["some", delimiter, "text"]
       end
 
       def self.delimiter
