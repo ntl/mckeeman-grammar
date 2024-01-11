@@ -18,3 +18,5 @@ require "mckeeman_grammar/controls/pattern/range/codepoint"
 require "mckeeman_grammar/controls/pattern/name"
 require "mckeeman_grammar/controls/pattern/singleton"
 require "mckeeman_grammar/controls/pattern/rule"
+
+require "mckeeman_grammar/controls/rule"
