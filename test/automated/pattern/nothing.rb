@@ -17,6 +17,8 @@ context "Pattern" do
     context "Rule Name" do
       rule_name = match.rule_name
 
+      comment rule_name.inspect
+
       test "Not set" do
         assert(rule_name.nil?)
       end
