@@ -6,7 +6,13 @@ module McKeemanGrammar
           rule_name ||= self.rule_name
           alternatives ||= self.alternatives
 
-          McKeemanGrammar::Pattern::Rule.new(rule_name, alternatives)
+          rule = McKeemanGrammar::Pattern::Rule.new(rule_name)
+
+          alternatives.each do |alternative|
+            rule << alternative
+          end
+
+          rule
         end
 
         def self.other_example

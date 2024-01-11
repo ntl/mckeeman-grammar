@@ -4,7 +4,16 @@ module McKeemanGrammar
       include Pattern
       include Initializer
 
-      initializer :rule_name, :alternatives
+      def alternatives
+        @alternatives ||= []
+      end
+
+      initializer :rule_name
+
+      def add_alternative(alternative)
+        alternatives << alternative
+      end
+      alias :<< :add_alternative
 
       def match(text)
         longest_match = nil
