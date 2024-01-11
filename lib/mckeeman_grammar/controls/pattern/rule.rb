@@ -31,6 +31,14 @@ module McKeemanGrammar
           Alternative.example
         end
 
+        module New
+          def self.example
+            alternatives = []
+
+            Rule.example(alternatives:)
+          end
+        end
+
         module MultipleAlternatives
           def self.example
             Rule.example(rule_name:, alternatives:)

@@ -13,3 +13,5 @@ require "mckeeman_grammar/pattern/alternative"
 require "mckeeman_grammar/pattern/rule"
 
 require "mckeeman_grammar/rule_registry"
+
+require "mckeeman_grammar/builder"
