@@ -3,7 +3,7 @@ module McKeemanGrammar
     module Pattern
       module Range
         def self.example(range: nil, exclusions: nil)
-          range ||= (range_begin..range_end)
+          range ||= self.range
 
           if exclusions == :none
             exclusions = []
@@ -12,6 +12,10 @@ module McKeemanGrammar
           end
 
           McKeemanGrammar::Pattern::Range.build(range, *exclusions)
+        end
+
+        def self.range
+          (range_begin..range_end)
         end
 
         def self.range_begin

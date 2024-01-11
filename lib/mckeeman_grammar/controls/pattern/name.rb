@@ -10,7 +10,7 @@ module McKeemanGrammar
         end
 
         def self.rule_name
-          Rule.name
+          Controls::Rule.name
         end
 
         def self.rules

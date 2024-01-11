@@ -6,12 +6,6 @@ module McKeemanGrammar
 
       initializer :rule_name, :alternatives
 
-      def self.build(rule_name, alternative, *alternatives)
-        alternatives.unshift(alternative)
-
-        new(rule_name, alternatives)
-      end
-
       def match(text)
         longest_match = nil
 

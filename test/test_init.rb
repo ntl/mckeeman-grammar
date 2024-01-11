@@ -4,4 +4,6 @@ require "test_bench"; TestBench.activate
 
 require "mckeeman_grammar/controls"
 
-include McKeemanGrammar rescue nil
+require "pp"
+
+include McKeemanGrammar

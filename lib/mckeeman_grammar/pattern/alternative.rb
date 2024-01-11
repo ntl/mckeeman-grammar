@@ -6,27 +6,6 @@ module McKeemanGrammar
 
       initializer :segment_patterns
 
-      ## Review whether this is needed after grammar parser is implemented
-      ## If it is needed, write tests
-      def self.build(segment, *segments)
-        segments.unshift(segment)
-
-        segment_patterns = segments.map do |segment|
-          case segment
-          in String => characters
-            CharacterLiteral.new(characters)
-          in ::Range => range
-            Range.build(range)
-          in Integer => codepoint
-            Singleton.build(codepoint)
-          in Pattern
-            segment
-          end
-        end
-
-        new(segment_patterns)
-      end
-
       def match(text)
         segments = segment_patterns.map do |segment_pattern|
           match = segment_pattern.match(text)

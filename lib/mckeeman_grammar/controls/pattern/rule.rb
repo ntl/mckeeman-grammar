@@ -6,7 +6,7 @@ module McKeemanGrammar
           rule_name ||= self.rule_name
           alternatives ||= self.alternatives
 
-          McKeemanGrammar::Pattern::Rule.build(rule_name, *alternatives)
+          McKeemanGrammar::Pattern::Rule.new(rule_name, alternatives)
         end
 
         def self.other_example
@@ -47,7 +47,11 @@ module McKeemanGrammar
           end
 
           def self.partial_alternative
-            McKeemanGrammar::Pattern::Alternative.build(Text.words.first)
+            segment_characters = Text.words.first
+            segment_pattern = CharacterLiteral.example(segment_characters)
+
+            segment_patterns = [segment_pattern]
+            McKeemanGrammar::Pattern::Alternative.new(segment_patterns)
           end
 
           def self.longer_alternative
