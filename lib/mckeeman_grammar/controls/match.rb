@@ -14,7 +14,7 @@ module McKeemanGrammar
       end
 
       def self.rule_name
-        Rule::Name.example
+        RuleName.example
       end
 
       def self.segments

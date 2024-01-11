@@ -59,7 +59,7 @@ context "Match" do
       end
 
       context "Rule" do
-        rule_name = Controls::Rule::Name.random
+        rule_name = Controls::RuleName.random
 
         control_segments = [
           Controls::Match.example(rule_name:, segments: ["b"]),

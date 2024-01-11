@@ -23,7 +23,7 @@ context "Match" do
     context "A Segment's Rule Name Doesn't Correspond" do
       match = Controls::Match.example
 
-      rule_name = Controls::Rule::Name.random
+      rule_name = Controls::RuleName.random
 
       context "Segment" do
         segment = match.segment_by_rule(rule_name)
@@ -37,7 +37,7 @@ context "Match" do
     end
 
     context "Multiple Segments' Rule Names Correspond" do
-      rule_name = Controls::Rule::Name.random
+      rule_name = Controls::RuleName.random
 
       segments = [
         Controls::Match.example(rule_name:, segments: ["a"]),

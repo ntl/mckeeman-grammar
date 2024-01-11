@@ -14,7 +14,7 @@ module McKeemanGrammar
         end
 
         def self.rule_name
-          Controls::Rule::Name.example
+          RuleName.example
         end
 
         def self.alternatives
@@ -31,7 +31,7 @@ module McKeemanGrammar
           end
 
           def self.rule_name
-            Controls::Rule::Name.other_example
+            Controls::RuleName.other_example
           end
 
           def self.alternatives

@@ -10,7 +10,7 @@ module McKeemanGrammar
         end
 
         def self.rule_name
-          Controls::Rule.name
+          Controls::RuleName.example
         end
 
         def self.rules
@@ -21,7 +21,7 @@ module McKeemanGrammar
 
         module UnknownRule
           def self.example
-            rule_name = Controls::Rule::Name.random
+            rule_name = Controls::RuleName.random
 
             Name.example(rule_name:)
           end

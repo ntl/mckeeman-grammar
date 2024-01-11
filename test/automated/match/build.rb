@@ -5,7 +5,7 @@ context "Match" do
     segments = ["some", "-", "segments"]
 
     context "Optional Rule Name Given" do
-      control_rule_name = Controls::Rule::Name.example
+      control_rule_name = Controls::RuleName.example
 
       match = Match.build(*segments, rule_name: control_rule_name)
 

@@ -7,8 +7,10 @@ require "mckeeman_grammar/controls/grammar"
 require "mckeeman_grammar/controls/codepoint"
 require "mckeeman_grammar/controls/text"
 
-require "mckeeman_grammar/controls/rule"
+require "mckeeman_grammar/controls/rule_name"
+
 require "mckeeman_grammar/controls/match"
+
 require "mckeeman_grammar/controls/pattern/alternative"
 require "mckeeman_grammar/controls/pattern/character_literal"
 require "mckeeman_grammar/controls/pattern/range"
