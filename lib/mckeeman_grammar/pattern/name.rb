@@ -6,16 +6,18 @@ module McKeemanGrammar
       include Pattern
       include Initializer
 
-      initializer :rule_name, :rules
+      initializer :rule_name, :rule_registry
 
-      def self.build(rule_name, rules=nil)
-        rules ||= {}
+      def self.build(rule_name, rule_registry=nil)
+        rule_registry ||= {}
 
-        new(rule_name, rules)
+        new(rule_name, rule_registry)
       end
 
       def match(text)
-        rule = rules.fetch(rule_name) do
+        rule = rule_registry.get(rule_name)
+
+        if rule.nil?
           raise UnknownRuleError, "Unknown rule `#{rule_name}'"
         end
 

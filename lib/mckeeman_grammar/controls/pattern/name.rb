@@ -2,21 +2,19 @@ module McKeemanGrammar
   module Controls
     module Pattern
       module Name
-        def self.example(rule_name: nil, rules: nil)
+        def self.example(rule_name: nil, rule_registry: nil)
           rule_name ||= self.rule_name
-          rules ||= self.rules
+          rule_registry ||= self.rule_registry
 
-          McKeemanGrammar::Pattern::Name.build(rule_name, rules)
+          McKeemanGrammar::Pattern::Name.build(rule_name, rule_registry)
         end
 
         def self.rule_name
           Controls::RuleName.example
         end
 
-        def self.rules
-          {
-            rule_name => Rule.example
-          }
+        def self.rule_registry
+          RuleRegistry.example
         end
 
         module UnknownRule
