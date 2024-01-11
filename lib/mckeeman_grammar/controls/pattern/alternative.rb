@@ -2,22 +2,30 @@ module McKeemanGrammar
   module Controls
     module Pattern
       module Alternative
-        def self.example(*segment_patterns)
-          if segment_patterns.empty?
-            segment_patterns = self.segment_patterns
+        def self.example(*item_patterns)
+          if item_patterns.empty?
+            item_patterns = self.item_patterns
           end
 
-          McKeemanGrammar::Pattern::Alternative.new(segment_patterns)
+          McKeemanGrammar::Pattern::Alternative.new(item_patterns)
         end
 
-        def self.segment_patterns
-          first_word, range, last_word = Text.segments
+        def self.item_patterns
+          first_word, range, last_word = self.items
 
           first_word = CharacterLiteral.example(first_word)
-          range = Range::All.example
+          range = Range.example(range:, exclusions: :none)
           last_word = CharacterLiteral.example(last_word)
 
           [first_word, range, last_word]
+        end
+
+        def self.items
+          [
+            Text.segments.first,
+            Range::All.range,
+            Text.segments.last
+          ]
         end
       end
     end

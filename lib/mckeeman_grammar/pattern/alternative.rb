@@ -4,11 +4,11 @@ module McKeemanGrammar
       include Pattern
       include Initializer
 
-      initializer :segment_patterns
+      initializer :item_patterns
 
       def match(text)
-        segments = segment_patterns.map do |segment_pattern|
-          match = segment_pattern.match(text)
+        items = item_patterns.map do |item_pattern|
+          match = item_pattern.match(text)
 
           return nil if match.nil?
 
@@ -17,18 +17,18 @@ module McKeemanGrammar
           match
         end
 
-        Match.build(*segments)
+        Match.build(*items)
       end
 
       def source
         source = String.new
 
-        segment_patterns.each_with_index do |segment_pattern, index|
+        item_patterns.each_with_index do |item_pattern, index|
           if not index.zero?
             source << " "
           end
 
-          source << segment_pattern.source
+          source << item_pattern.source
         end
 
         source
