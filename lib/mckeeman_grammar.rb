@@ -11,3 +11,5 @@ require "mckeeman_grammar/pattern/range"
 require "mckeeman_grammar/pattern/name"
 require "mckeeman_grammar/pattern/alternative"
 require "mckeeman_grammar/pattern/rule"
+
+require "mckeeman_grammar/rule_registry"

@@ -20,3 +20,4 @@ require "mckeeman_grammar/controls/pattern/singleton"
 require "mckeeman_grammar/controls/pattern/rule"
 
 require "mckeeman_grammar/controls/rule"
+require "mckeeman_grammar/controls/rule_registry"
