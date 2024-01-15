@@ -64,8 +64,9 @@ module McKeemanGrammar
             segment_characters = Text.segments.first
             segment_pattern = CharacterLiteral.example(segment_characters)
 
-            segment_patterns = [segment_pattern]
-            McKeemanGrammar::Pattern::Alternative.new(segment_patterns)
+            alternative = McKeemanGrammar::Pattern::Alternative.new
+            alternative << segment_pattern
+            alternative
           end
 
           def self.longer_alternative

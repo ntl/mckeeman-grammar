@@ -4,7 +4,14 @@ module McKeemanGrammar
       include Pattern
       include Initializer
 
-      initializer :item_patterns
+      def item_patterns
+        @item_patterns ||= []
+      end
+
+      def add_item_pattern(item_pattern)
+        item_patterns << item_pattern
+      end
+      alias :<< :add_item_pattern
 
       def match(text)
         items = item_patterns.map do |item_pattern|

@@ -7,7 +7,13 @@ module McKeemanGrammar
             item_patterns = self.item_patterns
           end
 
-          McKeemanGrammar::Pattern::Alternative.new(item_patterns)
+          rule = McKeemanGrammar::Pattern::Alternative.new
+
+          item_patterns.each do |item_pattern|
+            rule << item_pattern
+          end
+
+          rule
         end
 
         def self.item_patterns
