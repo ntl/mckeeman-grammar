@@ -42,6 +42,7 @@ module McKeemanGrammar
       current_rule << alternative
     end
 
+    ## Remove, but reset current_alternative when finishing rule
     def finish_alternative
       assure_current_alternative
 
@@ -49,9 +50,22 @@ module McKeemanGrammar
     end
 
     def nothing
+      if current_alternative?
+        ## Message
+        raise StateError
+      end
+
       nothing = Pattern::Nothing.build
 
       current_rule << nothing
+    end
+
+    def singleton(codepoint)
+      assure_current_alternative
+
+      pattern = Pattern::Singleton.new(codepoint)
+
+      current_alternative << pattern
     end
 
     def assure_current_rule
