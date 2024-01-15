@@ -28,6 +28,20 @@ module McKeemanGrammar
       self.current_rule = nil
     end
 
+    def start_alternative
+      if current_alternative?
+        ## Message
+        raise StateError
+      end
+
+      assure_current_rule
+
+      alternative = Pattern::Alternative.new
+      self.current_alternative = alternative
+
+      current_rule << alternative
+    end
+
     def nothing
       nothing = Pattern::Nothing.build
 
