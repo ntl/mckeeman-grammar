@@ -3,6 +3,7 @@ module McKeemanGrammar
     StateError = Class.new(RuntimeError)
 
     attr_accessor :current_rule
+    attr_accessor :current_alternative
 
     def rule_registry
       @rule_registry ||= RuleRegistry.new
@@ -41,6 +42,10 @@ module McKeemanGrammar
 
     def current_rule?
       !current_rule.nil?
+    end
+
+    def current_alternative?
+      !current_alternative.nil?
     end
   end
 end
