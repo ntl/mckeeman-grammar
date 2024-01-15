@@ -42,6 +42,12 @@ module McKeemanGrammar
       current_rule << alternative
     end
 
+    def finish_alternative
+      assure_current_alternative
+
+      self.current_alternative = nil
+    end
+
     def nothing
       nothing = Pattern::Nothing.build
 
@@ -51,6 +57,12 @@ module McKeemanGrammar
     def assure_current_rule
       if not current_rule?
         raise StateError, "No current rule"
+      end
+    end
+
+    def assure_current_alternative
+      if not current_alternative?
+        raise StateError, "No current alternative"
       end
     end
 
