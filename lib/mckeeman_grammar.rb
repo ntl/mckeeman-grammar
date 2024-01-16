@@ -17,3 +17,5 @@ require "mckeeman_grammar/rule_registry"
 require "mckeeman_grammar/builder"
 
 require "mckeeman_grammar/handler"
+
+require "mckeeman_grammar/traverse"
