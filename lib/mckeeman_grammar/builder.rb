@@ -68,6 +68,22 @@ module McKeemanGrammar
       current_alternative << pattern
     end
 
+    def character_literal(characters)
+      assure_current_alternative
+
+      pattern = Pattern::CharacterLiteral.new(characters)
+
+      current_alternative << pattern
+    end
+
+    def range(range, *exclusions)
+      assure_current_alternative
+
+      pattern = Pattern::Range.build(range, *exclusions)
+
+      current_alternative << pattern
+    end
+
     def assure_current_rule
       if not current_rule?
         raise StateError, "No current rule"

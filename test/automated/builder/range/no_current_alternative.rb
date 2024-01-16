@@ -1,15 +1,15 @@
 require_relative "../../automated_init"
 
 context "Builder" do
-  context "Singleton" do
+  context "Range" do
     context "No Current Alternative" do
       builder = Controls::Builder::New.example
 
-      codepoint = Controls::Codepoint.example
+      range = Controls::Pattern::Range.range
 
       test "Is an error" do
         assert_raises(Builder::StateError) do
-          builder.singleton(codepoint)
+          builder.range(range)
         end
       end
     end

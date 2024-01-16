@@ -8,7 +8,7 @@ module McKeemanGrammar
           if exclusions == :none
             exclusions = []
           else
-            exclusions ||= Exclusion.examples
+            exclusions ||= self.exclusions
           end
 
           McKeemanGrammar::Pattern::Range.build(range, *exclusions)
@@ -28,6 +28,10 @@ module McKeemanGrammar
 
         def self.range_end
           Codepoint.range_end
+        end
+
+        def self.exclusions
+          Exclusion.examples
         end
 
         module All
