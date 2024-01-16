@@ -17,7 +17,9 @@ module McKeemanGrammar
           return nil
         end
 
-        Match.build(codepoint.chr)
+        ## Test
+        match_segment = [codepoint].pack("U")
+        Match.build(match_segment)
       end
 
       def member?(codepoint)
