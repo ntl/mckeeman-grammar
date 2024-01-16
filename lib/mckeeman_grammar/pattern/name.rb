@@ -9,7 +9,7 @@ module McKeemanGrammar
       initializer :rule_name, :rule_registry
 
       def self.build(rule_name, rule_registry=nil)
-        rule_registry ||= {}
+        rule_registry ||= RuleRegistry.new
 
         new(rule_name, rule_registry)
       end

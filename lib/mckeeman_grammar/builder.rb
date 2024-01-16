@@ -84,6 +84,15 @@ module McKeemanGrammar
       current_alternative << pattern
     end
 
+    def name(rule_name)
+      assure_current_alternative
+
+      rule_registry = self.rule_registry
+      pattern = Pattern::Name.build(rule_name, rule_registry)
+
+      current_alternative << pattern
+    end
+
     def assure_current_rule
       if not current_rule?
         raise StateError, "No current rule"
