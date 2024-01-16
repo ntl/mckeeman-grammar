@@ -5,11 +5,11 @@ context "Builder" do
     context "No Current Alternative" do
       builder = Controls::Builder::New.example
 
-      character_literal = Controls::Text.example
+      characters = Controls::Text.example
 
       test "Is an error" do
         assert_raises(Builder::StateError) do
-          builder.character_literal(character_literal)
+          builder.character_literal(characters)
         end
       end
     end

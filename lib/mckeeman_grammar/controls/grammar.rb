@@ -45,7 +45,24 @@ module McKeemanGrammar
 
       module McKeemanForm
         def self.example
-          Read.(filename)
+          raw_text = Read.(filename)
+
+          # McKeeman Form grammar appears to have a mistake in its specification of itself
+          # Nathan Ladd, Tue Jan 16 2024
+          incorrect_text = <<~PATTERN
+          rule
+              name newline
+              nothing
+              alternatives
+          PATTERN
+
+          correct_text = <<~TEXT
+          rule
+              name newline nothing alternatives
+          TEXT
+
+          incorrect_text_pattern = Regexp.new(incorrect_text, Regexp::MULTILINE)
+          raw_text.gsub(incorrect_text_pattern, correct_text)
         end
 
         def self.filename
