@@ -23,3 +23,5 @@ require "mckeeman_grammar/controls/rule"
 require "mckeeman_grammar/controls/rule_registry"
 
 require "mckeeman_grammar/controls/builder"
+
+require "mckeeman_grammar/controls/handler"

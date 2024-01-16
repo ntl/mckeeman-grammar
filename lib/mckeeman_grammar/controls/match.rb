@@ -2,7 +2,11 @@ module McKeemanGrammar
   module Controls
     module Match
       def self.example(rule_name: nil, segments: nil)
-        rule_name ||= self.rule_name
+        if rule_name == :none
+          rule_name = nil
+        else
+          rule_name ||= self.rule_name
+        end
 
         if segments == :none
           segments = []
