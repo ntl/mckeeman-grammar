@@ -1,30 +1,7 @@
-require_relative "automated_init"
+require_relative "../automated_init"
 
-## Clean up test - Nathan, Tue Jan 16 2024
 context "Traverse" do
-  builder = Builder.new
-
-  builder.start_rule(:some_leaf_rule)
-  builder.start_alternative
-  builder.character_literal("some")
-  builder.character_literal("-")
-  builder.finish_alternative
-  builder.finish_rule
-
-  builder.start_rule(:some_branch_rule)
-  builder.start_alternative
-  builder.name(:some_leaf_rule)
-  builder.character_literal("text")
-  builder.finish_alternative
-  builder.finish_rule
-
-  builder.start_rule(:some_root_rule)
-  builder.start_alternative
-  builder.name(:some_branch_rule)
-  builder.finish_alternative
-  builder.finish_rule
-
-  root_pattern = builder.rule_registry.get(:some_root_rule)
+  root_pattern = Controls::Rule::Root.example
 
   handler = Controls::Handler.example do
     attr_accessor :root_rule_text

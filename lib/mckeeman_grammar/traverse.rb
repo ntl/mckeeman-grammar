@@ -1,5 +1,7 @@
 module McKeemanGrammar
   class Traverse
+    SyntaxError = Class.new(RuntimeError)
+
     include Initializer
 
     initializer :root_pattern, :handler
@@ -8,7 +10,17 @@ module McKeemanGrammar
     def call(text)
       match = root_pattern.match(text)
 
-      matched(match)
+      if not match.nil?
+        matched(match)
+
+        if match.length < text.length
+          ## Message - Nathan, Thu Jan 16 2024
+          raise SyntaxError
+        end
+      else
+        ## Message - Nathan, Thu Jan 16 2024
+        raise SyntaxError
+      end
     end
 
     def matched(match)
