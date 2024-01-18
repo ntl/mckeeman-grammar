@@ -1,0 +1,67 @@
+document_markup
+    ""
+    lines
+
+lines
+    line
+    line lines
+
+line
+    empty_line
+    content_line
+
+empty_line
+    optional_whitespace newline
+
+content_line
+    content newline
+
+content
+    content_element
+    content_element optional_whitespace content
+
+content_element
+    tag
+    word
+
+tag
+    '{' tag_name '}'
+
+tag_name
+    lowercase_letter tag_name_remainder
+
+tag_name_remainder
+    ""
+    lowercase_letter tag_name_remainder
+    '-' lowercase_letter tag_name_remainder
+
+word
+    word_character
+    word_character word
+
+word_character
+    ' ' . '10FFFF' - ' '
+
+optional_whitespace
+    ""
+    whitespace
+
+whitespace
+    whitespace_character
+    whitespace_character whitespace
+
+whitespace_character
+    space
+    tab
+
+lowercase_letter
+    'a' . 'z'
+
+newline
+    '000A'
+
+space
+    ' '
+
+tab
+    '0009'

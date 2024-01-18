@@ -50,10 +50,10 @@ module McKeemanGrammar
     end
 
     def nothing
-      if current_alternative?
-        ## Message
-        raise StateError
-      end
+      #if current_alternative?
+      #  ## Message
+      #  raise StateError
+      #end
 
       nothing = Pattern::Nothing.build
 
